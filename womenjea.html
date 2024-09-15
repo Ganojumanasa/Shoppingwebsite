@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Jeans</title>
+    <link rel="stylesheet" href="kid.css">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <ul>
+                <li><img src="./shopping logo.png" alt="Shopping Logo"></li>
+                <li><input type="text" placeholder="Search..."></li>
+                <li><h5>Contact Us</h5></li>
+            </ul>
+            <div class="profile">
+                <a href="cart.html">
+                    <img src="./profilelogo.png" alt="Cart">
+                </a>
+            </div>
+        </div>
+    </header>
+    <section>
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="dress">
+                <img src="./woemnjeans/1.jpeg" alt="Dress 1">
+                <div class="info">
+                    <p class="price">$29.99</p>
+                    <a href="profile.html">
+                        <button class="buy-button">Buy</button>
+                    </a>
+                    <button class="add-to-cart" data-name="Dress 1" data-price="29.99" data-image="./woemnjeans/1.jpeg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="dress">
+                <img src="./woemnjeans/2.jpeg" alt="Dress 2">
+                <div class="info">
+                    <p class="price">$34.99</p>
+                    <a href="profile.html">
+                        <button class="buy-button">Buy</button>
+                    </a>
+                    <button class="add-to-cart" data-name="Dress 2" data-price="34.99" data-image="./woemnjeans/2.jpeg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="dress">
+                <img src="./woemnjeans/3.jpeg" alt="Dress 3">
+                <div class="info">
+                    <p class="price">$39.99</p>
+                    <a href="profile.html">
+                        <button class="buy-button">Buy</button>
+                    </a>
+                    <button class="add-to-cart" data-name="Dress 3" data-price="39.99" data-image="./woemnjeans/3.jpeg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="dress">
+                <img src="./woemnjeans/4.jpeg" alt="Dress 4">
+                <div class="info">
+                    <p class="price">$44.99</p>
+                    <a href="profile.html">
+                        <button class="buy-button">Buy</button>
+                    </a>
+                    <button class="add-to-cart" data-name="Dress 4" data-price="44.99" data-image="./woemnjeans/4.jpeg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="dress">
+                <img src="./woemnjeans/5.jpeg" alt="Dress 5">
+                <div class="info">
+                    <p class="price">$49.99</p>
+                    <a href="profile.html">
+                        <button class="buy-button">Buy</button>
+                    </a>
+                    <button class="add-to-cart" data-name="Dress 5" data-price="49.99" data-image="./woemnjeans/5.jpeg">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h1 class="copy">Sponsor</h1>
+        <ul class="down">
+            <li><img src="./zudio.png" alt="Zudio"></li>
+            <li><img src="./amazon.png" alt="Amazon"></li>
+            <li><img src="./flipkart.jpeg" alt="Flipkart"></li>
+            <li><img src="./myntra.jpeg" alt="Myntra"></li>
+        </ul>
+    </footer>
+    <p class="copy">Copyright &copy; 2000</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = button.getAttribute('data-name');
+                    const price = parseFloat(button.getAttribute('data-price'));
+                    const image = button.getAttribute('data-image');
+                    
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    
+                    cart.push({ name, price, image });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    alert(`${name} added to cart!`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

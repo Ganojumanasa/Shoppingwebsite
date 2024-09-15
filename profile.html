@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Booking Form with Voice</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <ul>
+                <li><img src="./shopping logo.png"></li>
+                <li><input type="text" placeholder="search.."></li>
+                <li><h5>Contact us</h5></li>
+            </ul>
+        </div>
+    </header>
+
+    <section>
+        <ul>
+            <li><h3>Personal details</h3></li>
+            <li class="input-container">
+                <input type="text" id="firstName" placeholder="First Name" onfocus="speak('Please enter your first name')">
+                <button onclick="startRecognition('firstName')">🎤</button>
+            </li>
+            <li class="input-container">
+                <input type="text" id="middleName" placeholder="Middle Name" onfocus="speak('Please enter your middle name')">
+                <button onclick="startRecognition('middleName')">🎤</button>
+            </li>
+            <li class="input-container">
+                <input type="text" id="lastName" placeholder="Last Name" onfocus="speak('Please enter your last name')">
+                <button onclick="startRecognition('lastName')">🎤</button>
+            </li>
+            <li class="input-container">
+                <input type="text" id="phoneNumber" placeholder="Phone Number" onfocus="speak('Please enter your phone number')">
+                <button onclick="startRecognition('phoneNumber')">🎤</button>
+            </li>
+            <li class="input-container">
+                <input type="email" id="email" placeholder="Email" onfocus="speak('Please enter your email address')">
+                <button onclick="startRecognition('email')">🎤</button>
+            </li>
+            <li class="input-container">
+                <input type="number" id="age" placeholder="Age" onfocus="speak('Please enter your age')">
+                <button onclick="startRecognition('age')">🎤</button>
+            </li>
+            <li>
+                <label><input type="radio" name="gender" value="Male" onfocus="speak('Select Male as gender')"> Male</label>
+            </li>
+            <li>
+                <label><input type="radio" name="gender" value="Female" onfocus="speak('Select Female as gender')"> Female</label>
+            </li>
+        </ul>
+
+        <div>
+            <ul>
+                <li><h3>Address</h3></li>
+                <li class="input-container">
+                    <input type="text" id="houseNumber" placeholder="House Number" onfocus="speak('Enter house number')">
+                    <button onclick="startRecognition('houseNumber')">🎤</button>
+                </li>
+                <li class="input-container">
+                    <input type="text" id="streetName" placeholder="Street Name" onfocus="speak('Enter street name')">
+                    <button onclick="startRecognition('streetName')">🎤</button>
+                </li>
+                <li class="input-container">
+                    <input type="text" id="cityName" placeholder="City Name" onfocus="speak('Enter city name')">
+                    <button onclick="startRecognition('cityName')">🎤</button>
+                </li>
+                <li class="input-container">
+                    <input type="text" id="mandal" placeholder="Mandal" onfocus="speak('Enter mandal')">
+                    <button onclick="startRecognition('mandal')">🎤</button>
+                </li>
+                <li class="input-container">
+                    <input type="text" id="district" placeholder="District" onfocus="speak('Enter district')">
+                    <button onclick="startRecognition('district')">🎤</button>
+                </li>
+                <li class="input-container">
+                    <input type="text" id="pincode" placeholder="Pincode" onfocus="speak('Enter pincode')">
+                    <button onclick="startRecognition('pincode')">🎤</button>
+                </li>
+                <li>
+                    <input type="checkbox" name="agree" onfocus="speak('Please agree to the terms and conditions')"> I Agree
+                </li>
+                <li><input type="submit" value="Submit" onclick="submitForm()"></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <h1 class="copy">Sponsors</h1>
+        <ul class="down">
+            <li><img src="./zudio.png"></li>
+            <li><img src="./amazon.png"></li>
+            <li><img src="./flipcart.jpeg"></li>
+            <li><img src="./myntra.jpeg"></li>
+        </ul>
+    </footer>
+    <p class="copy">© 2000</p>
+
+    <script>
+        function speak(text) {
+            const speech = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(speech);
+        }
+
+        function submitForm() {
+            speak('Form submitted. Thank you!');
+        }
+
+        function startRecognition(inputId) {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+
+            recognition.onresult = function(event) {
+                document.getElementById(inputId).value = event.results[0][0].transcript;
+            };
+
+            recognition.start();
+        }
+    </script>
+</body>
+</html>
